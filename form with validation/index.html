@@ -7,17 +7,27 @@
     <div class="section" id="app">
       <form class="form" v-on:submit.prevent>
         <div class="field">
-            <input class="input" id="username" type="text" v-model="username">
+          <label class="label">username</label>
+        <input class="input" id="username" type="text" 
+                v-model="username" 
+                v-bind:class="{'is-danger':usernameError}">
+            <div class="has-text-danger"
+                 v-if="usernameError">{{usernameErrorMessage}}</div>
         </div>
        <div class="field">
-          <input class="input" id="password" type="text" v-model="password">
+         <label class="label">password</label>
+          <input class="input" id="password" type="text" 
+                  v-model="password" 
+                  v-bind:class="{'is-danger':passwordError}">
+          <div class="has-text-danger"
+               v-if="passwordError">{{passwordErrorMessage}}</div>
        </div>
         <div class="field">
-            <button class="button" type="submit" v-on:click="login">Login</button>
+            <button class="button is-primary" type="submit " v-on:click="login">Login</button>
         </div>
         
       </form>
-    </div>
-    
+    </div>   
   </body>
+  <script src="script.js"></script>
 </html>
