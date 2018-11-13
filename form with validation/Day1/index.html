@@ -1,7 +1,7 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" >
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>    
   </head>
   <body>
     <div class="section" id="app">
@@ -11,9 +11,13 @@
         <input class="input" id="username" type="text" 
                 v-model="username" 
                 v-bind:class="{'is-danger':usernameError}">
-            <div class="has-text-danger"
-                 v-if="usernameError">{{usernameErrorMessage}}</div>
-        </div>
+            <!--<div class="has-text-danger"v-if="usernameError">{{usernameErrorMessage}}</div>-->
+            <ul>
+              <li v-for="error in usernameErrorMessage">{{error.msg}.toString()}</li>
+              <!--<span>{{error.date}.toString()}</span> -->
+            </ul>
+        </div>        
+       
        <div class="field">
          <label class="label">password</label>
           <input class="input" id="password" type="text" 
@@ -23,9 +27,9 @@
                v-if="passwordError">{{passwordErrorMessage}}</div>
        </div>
         <div class="field">
-            <button class="button is-primary" type="submit " v-on:click="login">Login</button>
-        </div>
-        
+            <button class="button is-primary" 
+            type="submit " v-on:click="login">Login</button>
+        </div>        
       </form>
     </div>   
   </body>

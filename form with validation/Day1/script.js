@@ -5,14 +5,14 @@ var app = new Vue({
     password:"",
     usernameError:false,
     passwordError:false,
-    usernameErrorMessage:'',
-    passwordErrorMessage:''    
+    usernameErrorMessage:[],
+    passwordErrorMessage:[]    
   },
   methods:{
     login: function(){
       this.usernameError  =false
       this.passwordError = false
-      this.usernameErrorMessage =''
+      this.usernameErrorMessage = []
       this.passwordErrorMessage = ''
 
       if(this.username.length < 3){
@@ -21,7 +21,7 @@ var app = new Vue({
       }
       if(this.username.indexOf('@') == -1 || this.username === ""){
         this.usernameError = true
-        this.usernameErrorMessage = 'Enter valid email address'
+        this.usernameErrorMessage.push('Enter valid email address,e.g must include the @ charector and the domain.com')
         
       }
       if(this.password.length < 6){
